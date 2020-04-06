@@ -4,8 +4,9 @@ public class MenuManager {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		VacationSpotManager vacationSpotManager = new VacationSpotManager(input);
+		
+		
 		int num = -1;
-
 		while (num != 5 ) {
 			System.out.println("*** Recommanded Vacation Spot List ***");
 			System.out.println("1.Add Recommanded Vacation Spot");			
