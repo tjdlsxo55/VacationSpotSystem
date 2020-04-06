@@ -1,59 +1,58 @@
 import java.util.Scanner;
 
 public class VacationSpotManager {
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		int num = 4;
-
-		while (num != 5 ) {
-			System.out.println("*** Recommanded Vacation Spot List ***");
-			System.out.println("1.Add Recommanded Vacation Spot");			
-			System.out.println("2.Delete Recommanded Vacation Spot");
-			System.out.println("3.View List");
-			System.out.println("4.show a menu");
-			System.out.println("5.Log Out");
-			System.out.println("Select one number between 1 - 5:");
-			num = input.nextInt();
-			if (num ==1 ) {
-				addVacationSpot();
-			}
-			else if (num ==2 ) {
-				deleteVacationSpot();
-			}
-			else if (num ==3 ) {
-				viewVacationSpotList();
-			}
-			else {
-				continue;
-			}
+	Vacationspot vacationspot;
+	Scanner input;
+	
+	VacationSpotManager(Scanner input){
+		this.input = input;
+	}
+	public void addVacationSpot() {				
+		
+		vacationspot = new Vacationspot();
+		System.out.print("Recommanded Vacation Spot System ID:");
+		vacationspot.id = input.nextInt();
+		System.out.print("Recommanded Vacation Spot Name:");
+		vacationspot.name = input.next();
+		System.out.print("Location of Recommanded Vacation Spot:");
+		vacationspot.spot = input.next();
+		System.out.print("Recommanded Vacation Spot Price:");
+		vacationspot.price = input.nextInt();
+		System.out.print("Phone number:");
+		vacationspot.phone = input.next();
+	}
+	public void deleteVacationSpot() {				
+		System.out.print("Recommanded Vacation Spot System ID:");
+		int vacationspotid = input.nextInt();
+		if (vacationspot == null) {
+			System.out.println("the vacation sopt has not been registered");
+			return;
+		}
+		if (vacationspot.id == vacationspotid) {
+			vacationspot = null;
+			System.out.println("the vacation spot is deleted");
 		}
 	}
-	public static void addVacationSpot() {				
-		Scanner input = new Scanner(System.in);
-		System.out.print("Recommanded Vacation Spot System ID:");
-		int vacationSpot = input.nextInt();
-		System.out.print("Recommanded Vacation Spot Name:");
-		String vacationSpotName = input.next();
-		System.out.println(vacationSpotName);
-		System.out.print("Location of Recommanded Vacation Spot:");
-		String VacationSpotLocation = input.next();
-		System.out.println(VacationSpotLocation);
-		System.out.print("Recommanded Vacation Spot Price:");
-		int vacationSpotPrice = input.nextInt();
-		System.out.println(vacationSpotPrice);
-		System.out.print("Phone number:");
-		String vacationSpotPhonenumber = input.next();
-		System.out.println(vacationSpotPhonenumber);
+	public void editVacationSpot() {				
+		System.out.print("Vacation Spot System ID:");
+		int vacationspotid = input.nextInt();
+		if (vacationspot.id == vacationspotid) {
+			System.out.println("the vacation spot to be edited is " + vacationspotid);
+		
+		}
+		
 	}
-	public static void deleteVacationSpot() {				
-		Scanner input = new Scanner(System.in);
+	public void viewVacationSpotList() {				
 		System.out.print("Recommanded Vacation Spot System ID:");
-		int vacationSpot = input.nextInt();
-	}
-	public static void viewVacationSpotList() {				
-		Scanner input = new Scanner(System.in);
-		System.out.print("Recommanded Vacation Spot System ID:");
-		int vacationSpot = input.nextInt();
+		int vacationspotid = input.nextInt();
+		if (vacationspot.id == vacationspotid) {
+			vacationspot.printInfo();
+			
+		}
 	}
 
-}
+
+	
+	}
+
+
