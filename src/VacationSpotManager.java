@@ -96,7 +96,7 @@ public class VacationSpotManager {
 	public void viewVacationSpotList() {				
 //		System.out.print("Recommanded Vacation Spot System ID:");
 //		int vacationspotid = input.nextInt();
-		System.out.println("number of registered vacationspots:" + Vacationspot.numVacationSpotsRegistered);
+		System.out.println("number of registered vacationspots: " + Vacationspot.numVacationSpotsRegistered);
 		for (int i = 0; i<vacationspots.size(); i++) {
 			vacationspots.get(i).printInfo();
 		}	
