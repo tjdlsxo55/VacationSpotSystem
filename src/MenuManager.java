@@ -22,6 +22,7 @@ public class MenuManager {
 			else if (num ==2 ) {
 				vacationSpotManager.deleteVacationSpot();
 			}
+			
 			else if (num ==3 ) {
 				vacationSpotManager.editVacationSpot();
 			}
