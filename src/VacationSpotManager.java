@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Vacation.Museum;
-import Vacation.Vacationspot;
+import Vacationspot.Mountain;
+import Vacationspot.Museum;
+import Vacationspot.Restaurant;
+import Vacationspot.Sea;
+import Vacationspot.VacationSpotKind;
+import Vacationspot.Vacationspot;
 
 public class VacationSpotManager {
 	ArrayList<Vacationspot> vacationspots = new ArrayList<Vacationspot>();
@@ -15,35 +19,37 @@ public class VacationSpotManager {
 		Vacationspot vacationspot;
 		int kind = 0;
 		while (kind != 1 && kind != 2) {
-			System.out.print("Select Vacation Spot Kind:");
-			System.out.print("1 for Museum:");
-			System.out.print("2 for Restaurant:");
-			System.out.print("3 for Sea:");
-			System.out.print("4 for Mountain:");
-			System.out.print("select num for Vacation Spot Kind between one, two, three and four:");
+
+			System.out.println("Select Vacation Spot Kind");
+			System.out.println("1 for Museum");
+			System.out.println("2 for Restaurant");
+			System.out.println("3 for Sea");
+			System.out.println("4 for Mountain");
+			System.out.println("select num 1,2,3 or 4 for Vacation Spot Kind:");
+			
 			kind = input.nextInt();
 			
 			
 			if (kind == 1) {
-				vacationspot = new Museum();
+				vacationspot = new Museum(VacationSpotKind.Museum);
 				vacationspot.getUserInput(input);
 				vacationspots.add(vacationspot);				
 				break;
 			}
 			else if (kind == 2) {
-				vacationspot = new Vacationspot();
+				vacationspot = new Restaurant(VacationSpotKind.Restaurant);
 				vacationspots.add(vacationspot);
 				vacationspot.getUserInput(input);
 				break;
 			}
 			else if (kind == 3) {
-				vacationspot = new Vacationspot();				
+				vacationspot = new Sea(VacationSpotKind.sea);				
 				vacationspots.add(vacationspot);
 				vacationspot.getUserInput(input);
 				break;
 			}
 			else if (kind == 4) {
-				vacationspot = new Vacationspot();
+				vacationspot = new Mountain(VacationSpotKind.Mountain);
 				vacationspot.getUserInput(input);
 				vacationspots.add(vacationspot);
 				break;

@@ -1,4 +1,4 @@
-package Vacation;
+package Vacationspot;
 
 import java.util.Scanner;
 
@@ -12,8 +12,12 @@ public class Vacationspot {
 	protected String phone;
 
 	
+	
 	public Vacationspot() {		
 
+	}
+	public Vacationspot(VacationSpotKind kind) {		
+		this.kind = kind;
 	}
 	
 	public Vacationspot(String id,String name) {
@@ -23,6 +27,15 @@ public class Vacationspot {
 	}
 	
 	public Vacationspot(String id,String name,String spot,int price,String phone) {
+		this.id = id;
+		this.name = name;
+		this.spot = spot;
+		this.price = price;
+		this.phone = phone;
+
+	}
+	public Vacationspot(VacationSpotKind kind,String id,String name,String spot,int price,String phone) {
+		this.kind = kind;
 		this.id = id;
 		this.name = name;
 		this.spot = spot;
@@ -77,10 +90,28 @@ public class Vacationspot {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public void printInfo() {
-		System.out.println("id:" + id + "name:" + name + "spot:" + spot + "price:" + price +"phone:" + phone);
-				
-	}
+		String skind = "none";
+		switch(this.kind) {
+		case Museum:
+			skind = "Museum.";
+			break;
+		case Restaurant:
+			skind = "Restaurant.";
+			break;
+		case sea:
+			skind = "Sea.";
+			break;
+		case Mountain:
+			skind = "Mountain.";
+			break;
+		default:			
+		}
+		System.out.println("Kind:" + skind + "id:" + id + "name:" + name + "spot:" + spot + "price:" + price + "phone:" + phone);
+		
+	}	
+	
 	public void getUserInput(Scanner input) {
 		
 		System.out.print("Recommanded Vacation Spot System ID:");

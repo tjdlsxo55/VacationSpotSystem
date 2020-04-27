@@ -1,8 +1,11 @@
-package Vacation;
+package Vacationspot;
 
 import java.util.Scanner;
 
 public class Museum extends Vacationspot{
+	public Museum(VacationSpotKind kind) {		
+		super(kind);
+	}		
 	public void getUserInput(Scanner input) {
 		
 		char answer = 'x';

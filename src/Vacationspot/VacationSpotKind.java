@@ -1,4 +1,4 @@
-package Vacation;
+package Vacationspot;
 
 public enum VacationSpotKind {
 	Museum,
