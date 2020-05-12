@@ -8,31 +8,36 @@ public class MenuManager {
 		
 		int num = -1;
 		while (num != 5 ) {
-			System.out.println("*** Recommanded Vacation Spot List ***");
-			System.out.println("1.Add Recommanded Vacation Spot");			
-			System.out.println("2.Delete Recommanded Vacation Spot");
-			System.out.println("3.Edit Recommanded Vacation Spot");
-			System.out.println("4.View List");
-			System.out.println("5.Log Out");
-			System.out.println("Select one number between 1 - 5:");
+			showMenu();
 			num = input.nextInt();
-			if (num ==1 ) {
+			switch(num) {
+			case 1:
 				vacationSpotManager.addVacationSpot();
-			}
-			else if (num ==2 ) {
+				break;
+			case 2:
 				vacationSpotManager.deleteVacationSpot();
-			}
-			
-			else if (num ==3 ) {
+				break;
+			case 3:
 				vacationSpotManager.editVacationSpot();
-			}
-			else if (num ==4 ) {
+				break;
+			case 4:
 				vacationSpotManager.viewVacationSpotList();
-			}
-			else {
+				break;
+			default:
 				continue;
 			}
 		}
 	}
+	public static void showMenu() {
+		System.out.println("*** Recommanded Vacation Spot List ***");
+		System.out.println("1.Add Recommanded Vacation Spot");			
+		System.out.println("2.Delete Recommanded Vacation Spot");
+		System.out.println("3.Edit Recommanded Vacation Spot");
+		System.out.println("4.View List");
+		System.out.println("5.Log Out");
+		System.out.println("Select one number between 1 - 5:");
+	
+	}
 }
+
 	

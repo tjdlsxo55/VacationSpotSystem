@@ -2,7 +2,7 @@ package Vacationspot;
 
 import java.util.Scanner;
 
-public class Sea extends Vacationspot{
+public class Sea extends Vacationspot {
 	public Sea(VacationSpotKind kind) {		
 		super(kind);
 		}
@@ -18,9 +18,7 @@ public class Sea extends Vacationspot{
 				System.out.print("Do you have an Id? (Y/N):");
 				answer = input.next().charAt(0);
 				if (answer == 'Y' || answer == 'y') {
-					System.out.print("Recommanded Vacation Spot System ID:");
-					String id = input.next();
-					this.setId(id);
+					setVacationSpotId(input);
 					break;
 				}
 				else if	(answer == 'N' || answer == 'N') {
@@ -39,9 +37,7 @@ public class Sea extends Vacationspot{
 				System.out.print("Do you have a parent's Phone Number? (Y/N):");
 				answer = input.next().charAt(0);
 				if (answer == 'Y' || answer == 'y') {
-					System.out.print("parent's Phone Number:");
-					String id = input.next();
-					this.setId(id);
+					setVacationSpotPhoneNumber(input);
 					break;
 				}
 				else if	(answer == 'N' || answer == 'N') {
@@ -53,40 +49,19 @@ public class Sea extends Vacationspot{
 				}
 			}
 			
-			System.out.print("Recommanded Vacation Spot Name:");
-			String name = input.next();
-			this.setName(name);
+			setVacationSpotName(input);
 			
-			System.out.print("Location of Recommanded Vacation Spot:");
-			String spot = input.next();
-			this.setSpot(spot);
+			setVacationSpotLocation(input);
 			
-			System.out.print("Recommanded Vacation Spot Price:");
-			int price = input.nextInt();
-			this.setPrice(price);
+			setVacationSpotPrice(input);
 			
-			System.out.print("Phone number:");
-			String phone = input.next();
-			this.setPhone(phone);
-		}
+			setVacationSpotPhoneNumber(input);
+			}
+	
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Museum:
-			skind = "Museum.";
-			break;
-		case Restaurant:
-			skind = "Restaurant.";
-			break;
-		case sea:
-			skind = "Sea.";
-			break;
-		case Mountain:
-			skind = "Mountain.";
-			break;
-		default:			
-		}
-		System.out.println("Kind:" + skind + "id:" + id + "name:" + name + "spot:" + spot + "price:" + price +"parant's phone:" + phone);
+		String skind = getKindString();
 		
+		System.out.println("Kind:" + skind + "id:" + id + "name:" + name + "spot:" + spot + "price:" + price +"parant's phone:" + phone);		
 	}
+
 }

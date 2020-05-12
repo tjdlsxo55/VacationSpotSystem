@@ -2,7 +2,7 @@ package Vacationspot;
 
 import java.util.Scanner;
 
-public class Vacationspot {
+public abstract class Vacationspot implements VacationSpotInput {
 
 	protected VacationSpotKind kind = VacationSpotKind.Museum;
 	protected String id;
@@ -91,7 +91,34 @@ public class Vacationspot {
 		this.phone = phone;
 	}
 
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setVacationSpotId(Scanner input) {
+		System.out.print("Recommanded Vacation Spot System ID:");
+		String id = input.next();
+		this.setId(id);
+	}
+	public void setVacationSpotName(Scanner input) {
+		System.out.print("Recommanded Vacation Spot Name:");
+		String name = input.next();
+		this.setName(name);
+	}
+	public void setVacationSpotLocation(Scanner input) {
+		System.out.print("Location of Recommanded Vacation Spot:");
+		String spot = input.next();
+		this.setSpot(spot);
+	}
+	public void setVacationSpotPrice(Scanner input) {
+		System.out.print("Recommanded Vacation Spot Price:");
+		int price = input.nextInt();
+		this.setPrice(price);
+	}
+	public void setVacationSpotPhoneNumber(Scanner input) {
+		System.out.print("Phone number:");
+		String phone = input.next();
+	    this.setPhone(phone);
+}
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Museum:
@@ -108,30 +135,6 @@ public class Vacationspot {
 			break;
 		default:			
 		}
-		System.out.println("Kind:" + skind + "id:" + id + "name:" + name + "spot:" + spot + "price:" + price + "phone:" + phone);
-		
-	}	
-	
-	public void getUserInput(Scanner input) {
-		
-		System.out.print("Recommanded Vacation Spot System ID:");
-		String id = input.next();
-		this.setId(id);
-		
-		System.out.print("Recommanded Vacation Spot Name:");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Location of Recommanded Vacation Spot:");
-		String spot = input.next();
-		this.setSpot(spot);
-		
-		System.out.print("Recommanded Vacation Spot Price:");
-		int price = input.nextInt();
-		this.setPrice(price);
-		
-		System.out.print("Phone number:");
-		String phone = input.next();
-		this.setPhone(phone);
+		return skind;
 	}
 }

@@ -5,18 +5,19 @@ import Vacationspot.Mountain;
 import Vacationspot.Museum;
 import Vacationspot.Restaurant;
 import Vacationspot.Sea;
+import Vacationspot.VacationSpotInput;
 import Vacationspot.VacationSpotKind;
 import Vacationspot.Vacationspot;
 
 public class VacationSpotManager {
-	ArrayList<Vacationspot> vacationspots = new ArrayList<Vacationspot>();
+	ArrayList<VacationSpotInput> vacationspots = new ArrayList<VacationSpotInput>();
 	Scanner input;
 	
 	VacationSpotManager(Scanner input){
 		this.input = input;
 	}
 	public void addVacationSpot() {	
-		Vacationspot vacationspot;
+		VacationSpotInput vacationspotinput;
 		int kind = 0;
 		while (kind != 1 && kind != 2) {
 
@@ -31,27 +32,27 @@ public class VacationSpotManager {
 			
 			
 			if (kind == 1) {
-				vacationspot = new Museum(VacationSpotKind.Museum);
-				vacationspot.getUserInput(input);
-				vacationspots.add(vacationspot);				
+				vacationspotinput = new Museum(VacationSpotKind.Museum);
+				vacationspotinput.getUserInput(input);
+				vacationspots.add(vacationspotinput);				
 				break;
 			}
 			else if (kind == 2) {
-				vacationspot = new Restaurant(VacationSpotKind.Restaurant);
-				vacationspots.add(vacationspot);
-				vacationspot.getUserInput(input);
+				vacationspotinput = new Restaurant(VacationSpotKind.Restaurant);
+				vacationspots.add(vacationspotinput);
+				vacationspotinput.getUserInput(input);
 				break;
 			}
 			else if (kind == 3) {
-				vacationspot = new Sea(VacationSpotKind.sea);				
-				vacationspots.add(vacationspot);
-				vacationspot.getUserInput(input);
+				vacationspotinput = new Sea(VacationSpotKind.sea);				
+				vacationspots.add(vacationspotinput);
+				vacationspotinput.getUserInput(input);
 				break;
 			}
 			else if (kind == 4) {
-				vacationspot = new Mountain(VacationSpotKind.Mountain);
-				vacationspot.getUserInput(input);
-				vacationspots.add(vacationspot);
+				vacationspotinput = new Mountain(VacationSpotKind.Mountain);
+				vacationspotinput.getUserInput(input);
+				vacationspots.add(vacationspotinput);
 				break;
 			}
 			else {
@@ -61,89 +62,83 @@ public class VacationSpotManager {
 
 
 	}
-
 	public void deleteVacationSpot() {				
 		System.out.print("Recommanded Vacation Spot System ID:");
 		String vacationspotid = input.next();
+		int index = findIndex(vacationspotid);
+		removefromVacationSpots(index,vacationspotid);		
+	}
+	public int findIndex(String vacationspotid) {
 		int index = -1;
 		for (int i = 0; i<vacationspots.size(); i++) {
-			if (vacationspots.get(i).getId() == vacationspotid) {
+		 	if (vacationspots.get(i).getId() == vacationspotid) {
 				index = i;
 				break;
 			}
 		}
+		return index;
+	}
+	public int removefromVacationSpots(int index,String vacationspotid)	 {
 		if (index >= 0) {
 			vacationspots.remove(index);
-
 			System.out.println("the vacation spot is deleted");
+			return 1;
 		}
 		else {
 			System.out.println("the vacation sopt has not been registered");
-			return;
-		}
-	}
-
-	
+			return -1;
+		}	
+	}	
 	public void editVacationSpot() {				
 		System.out.print("Vacation Spot System ID:");
 		String vacationspotid = input.next();
 		for (int i = 0; i<vacationspots.size(); i++) {
-			Vacationspot vacationspot = vacationspots.get(i);
+			VacationSpotInput vacationspot = vacationspots.get(i);
 			if (vacationspot.getId() == vacationspotid) {
 				int num = -1;
 				while (num != 6 ) {
-					System.out.println("*** Vacation Spot Info Edit Menu ***");
-					System.out.println("1.Edit Id");			
-					System.out.println("2.Edit Name");
-					System.out.println("3.Edit Spot");
-					System.out.println("4.Edit Price");
-					System.out.println("5.Edit Phone");
-					System.out.println("6.Exit");
+					showEditMenu();
 					num = input.nextInt();
-					if (num ==1 ) {
-						System.out.print("Recommanded Vacation Spot System ID:");
-						String id = input.next();
-						vacationspot.setId(id);
-					}
-					else if (num ==2 ) {
-						System.out.print("Recommanded Vacation Spot Name:");
-						String name = input.next();
-						vacationspot.setName(name);
-					}
-					else if (num ==3 ) {
-						System.out.print("Location of Recommanded Vacation Spot:");
-						String spot = input.next();
-						vacationspot.setSpot(spot);
-					}
-					else if (num ==4 ) {
-						System.out.print("Recommanded Vacation Spot Price:");
-						int price = input.nextInt();
-						vacationspot.setPrice(price);
-					}
-					else if (num ==5 ) {
-						System.out.print("Phone number:");
-						String phone = input.next();
-						vacationspot.setPhone(phone);
-				}
-					else {
+					switch(num) {
+					case 1:
+						vacationspot.setVacationSpotId( input);
+						break;
+					case 2:
+						vacationspot.setVacationSpotName( input);
+						break;
+					case 3:
+						vacationspot.setVacationSpotLocation(input);
+						break;
+					case 4:
+						vacationspot.setVacationSpotPrice(input);
+						break;
+					case 5:
+						vacationspot.setVacationSpotPhoneNumber(input);
+						break;
+					default:
 						continue;
-						} //if
-				} //while
+					} 
+				}
 				break;
-			} // if
-		} // for
-	}
-		
-		
-		
-	
+			}
+		}
+	}	
 	public void viewVacationSpotList() {				
-//		System.out.print("Recommanded Vacation Spot System ID:");
-//		int vacationspotid = input.nextInt();
+
 		System.out.println("number of registered vacationspots: " + vacationspots.size());
 		for (int i = 0; i<vacationspots.size(); i++) {
 			vacationspots.get(i).printInfo();
 		}	
 	}
-}
 
+		
+	public void showEditMenu() {
+		System.out.println("*** Vacation Spot Info Edit Menu ***");
+		System.out.println("1.Edit Id");			
+		System.out.println("2.Edit Name");
+		System.out.println("3.Edit Spot");
+		System.out.println("4.Edit Price");
+		System.out.println("5.Edit Phone");
+		System.out.println("6.Exit");	
+	}
+}
