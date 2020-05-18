@@ -8,7 +8,6 @@ public class Restaurant extends NearTheCity {
 	}		
 	
 	public void getUserInput(Scanner input) {
-			
 			setVacationSpotId(input);
 			setVacationSpotName(input);
 			setVacationSpotLocation(input);

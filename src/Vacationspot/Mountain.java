@@ -2,6 +2,8 @@ package Vacationspot;
 
 import java.util.Scanner;
 
+import Exceptions.PhoneFormatException;
+
 public class Mountain extends Vacationspot {
 	public Mountain(VacationSpotKind kind) {		
 		super(kind);
@@ -37,24 +39,34 @@ public class Mountain extends Vacationspot {
 				
 				System.out.print("Do you have a parent's Phone Number? (Y/N):");
 				answer = input.next().charAt(0);
-				if (answer == 'Y' || answer == 'y') {
-					setVacationSpotPhoneNumber(input);
-					break;
+				try {
+					if (answer == 'Y' || answer == 'y') {
+				
+						System.out.println("parent's Phone Number:");
+						String phone = input.next();
+						this.setPhone(phone);
+						break;
+					}
+					else if	(answer == 'N' || answer == 'N') {
+						this.setPhone("");
+						break;
+					}
+					else {
+					}		
 				}
-				else if	(answer == 'N' || answer == 'N') {
-					this.setId("");
-					break;
-				}
-				else {
+				catch(PhoneFormatException e) {
+					System.out.println("Incorrect Phone Number,put the - ");
 					
 				}
-			}
+			}	
+			
 			
 			setVacationSpotName(input);
 			
 			setVacationSpotLocation(input);
 			
 			setVacationSpotPrice(input);
+			
 	}
 			
 	public void printInfo() {

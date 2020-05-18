@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuManager {
@@ -5,9 +6,14 @@ public class MenuManager {
 		Scanner input = new Scanner(System.in);
 		VacationSpotManager vacationSpotManager = new VacationSpotManager(input);
 		
-		
+		selectMenu(input, vacationSpotManager);
+
+	}
+	
+	public static void selectMenu(Scanner input,VacationSpotManager vacationSpotManager) {
 		int num = -1;
 		while (num != 5 ) {
+			try {
 			showMenu();
 			num = input.nextInt();
 			switch(num) {
@@ -26,8 +32,18 @@ public class MenuManager {
 			default:
 				continue;
 			}
-		}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 5!");
+				if(input.hasNext()) {
+					input.next();
+				}
+				num = -1;
+			}
+			
+			}
 	}
+	
 	public static void showMenu() {
 		System.out.println("*** Recommanded Vacation Spot List ***");
 		System.out.println("1.Add Recommanded Vacation Spot");			

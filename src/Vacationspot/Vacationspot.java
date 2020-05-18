@@ -2,6 +2,8 @@ package Vacationspot;
 
 import java.util.Scanner;
 
+import Exceptions.PhoneFormatException;
+
 public abstract class Vacationspot implements VacationSpotInput {
 
 	protected VacationSpotKind kind = VacationSpotKind.Museum;
@@ -87,7 +89,10 @@ public abstract class Vacationspot implements VacationSpotInput {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(String phone) throws PhoneFormatException {
+		if (!phone.contains("-")) {
+			throw new PhoneFormatException();
+		}
 		this.phone = phone;
 	}
 
@@ -114,10 +119,15 @@ public abstract class Vacationspot implements VacationSpotInput {
 		this.setPrice(price);
 	}
 	public void setVacationSpotPhoneNumber(Scanner input) {
+		String phone = " ";
 		System.out.print("Phone number:");
-		String phone = input.next();
-	    this.setPhone(phone);
-}
+		phone = input.next();
+		    try {
+				this.setPhone(phone);
+			} catch (PhoneFormatException e) {
+				System.out.println("Incorrect Phone Number Format,put the Phone Number that contains -");
+			}
+		}
 	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {

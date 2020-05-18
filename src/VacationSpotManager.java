@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Vacationspot.Mountain;
@@ -19,8 +20,8 @@ public class VacationSpotManager {
 	public void addVacationSpot() {	
 		VacationSpotInput vacationspotinput;
 		int kind = 0;
-		while (kind != 1 && kind != 2) {
-
+		while (kind <1 || kind > 4 ) {
+			try {
 			System.out.println("Select Vacation Spot Kind");
 			System.out.println("1 for Museum");
 			System.out.println("2 for Restaurant");
@@ -57,6 +58,14 @@ public class VacationSpotManager {
 			}
 			else {
 				System.out.print("select num for Vacation Spot Kind between one, two, three and four:");
+			}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 4!");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}	
 

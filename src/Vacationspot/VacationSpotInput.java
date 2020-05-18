@@ -2,6 +2,8 @@ package Vacationspot;
 
 import java.util.Scanner;
 
+import Exceptions.PhoneFormatException;
+
 public interface VacationSpotInput {
 	public String getId();
 	public void setId(String id);
@@ -9,7 +11,7 @@ public interface VacationSpotInput {
 	public void setName(String name);
 	public void setSpot(String spot);
 	public void setPrice(int price);
-	public void setPhone(String phone);
+	public void setPhone(String phone) throws PhoneFormatException;
 	public void printInfo();
 	public void setVacationSpotId(Scanner input);
 	public void setVacationSpotName(Scanner input);
