@@ -1,11 +1,15 @@
 package Vacationspot;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.PhoneFormatException;
 
-public abstract class Vacationspot implements VacationSpotInput {
-
+public abstract class Vacationspot implements VacationSpotInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4754961464484118707L;
 	protected VacationSpotKind kind = VacationSpotKind.Museum;
 	protected String id;
 	protected String name;

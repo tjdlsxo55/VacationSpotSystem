@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,11 +9,16 @@ import Vacationspot.Restaurant;
 import Vacationspot.Sea;
 import Vacationspot.VacationSpotInput;
 import Vacationspot.VacationSpotKind;
-import Vacationspot.Vacationspot;
 
-public class VacationSpotManager {
+public class VacationSpotManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6702378943689092246L;
+	
+	
 	ArrayList<VacationSpotInput> vacationspots = new ArrayList<VacationSpotInput>();
-	Scanner input;
+	transient Scanner input;
 	
 	VacationSpotManager(Scanner input){
 		this.input = input;
