@@ -1,2 +1,0 @@
-# VacationSpotSystem
-oop at gnu
