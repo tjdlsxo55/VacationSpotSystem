@@ -1,13 +1,17 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class VacationSpotViewer extends JFrame{
+public class VacationSpotViewer extends JPanel{
+	
+	WindowFrame frame;
 
-	public VacationSpotViewer() {
+	public VacationSpotViewer(WindowFrame frame) {
+		this.frame = frame;
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Id");;
@@ -22,8 +26,5 @@ public class VacationSpotViewer extends JFrame{
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-		this.setVisible(true);
 	}
 }
