@@ -1,3 +1,4 @@
+  
 package Vacationspot;
 
 public enum VacationSpotKind {
