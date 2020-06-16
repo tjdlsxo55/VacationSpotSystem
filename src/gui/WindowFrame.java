@@ -3,18 +3,26 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class WindowFrame extends JFrame {
+import manager.VacationSpotManager;
 
+public class WindowFrame extends JFrame {
+	
+	VacationSpotManager vacationSpotManager ;
 	MenuSelection menuselection ;
 	VacationSpotAdder vacationspotadder ;
 	VacationSpotViewer vacationspotviewer ;
 
-	
-	public WindowFrame() {
 
-		this.menuselection = new MenuSelection(this);
-		this.vacationspotadder = new VacationSpotAdder(this);
-		this.vacationspotviewer = new VacationSpotViewer(this);	
+	
+	public WindowFrame(VacationSpotManager vacationSpotManager) {
+
+		
+		
+		
+		this.vacationSpotManager = vacationSpotManager;
+		menuselection = new MenuSelection(this);
+		vacationspotadder = new VacationSpotAdder(this);
+		vacationspotviewer = new VacationSpotViewer(this,this.vacationSpotManager);	
 		
 		
 		
@@ -22,6 +30,7 @@ public class WindowFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setupPanel(menuselection);
 		this.setVisible(true);
+
 		
 	}
 	

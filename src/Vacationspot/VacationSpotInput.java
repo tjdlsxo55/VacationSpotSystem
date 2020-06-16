@@ -18,4 +18,11 @@ public interface VacationSpotInput {
 	public void setVacationSpotLocation(Scanner input);
 	public void setVacationSpotPrice(Scanner input);
 	public void setVacationSpotPhoneNumber(Scanner input);
+	
+	public String getName();
+	public String getPhone();
+	public int getPrice();
+	public String getSpot();
+	public String getLocation();
+	
 }
